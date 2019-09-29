@@ -11,7 +11,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.2",
-    "react-simmor": "^0.2.2",
+    "react-simmor": "^0.2.3",
     "simmor": "^0.2.6",
     "typescript": "3.6.3"
   },

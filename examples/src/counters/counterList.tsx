@@ -6,13 +6,14 @@ import {ReducerStore} from "simmor"
 type CounterListState = {
   list: CounterState[]
 }
-export function getSum(state: {list: CounterState[]}) {
+
+export function getSum(state: { list: CounterState[] }) {
   return state.list.reduce((x, y) => x + y.value, 0)
 }
 
 export class CounterListStore extends ReducerStore<CounterListState> {
 
-  constructor(){
+  constructor() {
     super({list: []})
   }
 
@@ -20,7 +21,7 @@ export class CounterListStore extends ReducerStore<CounterListState> {
     this.draft.list.push({value: 0})
   }
 
-  resetAll(){
+  resetAll() {
     this.draft.list.forEach(x => x.value = 0)
   }
 
@@ -33,12 +34,12 @@ export const CounterList = () => {
   const sum = getSum(state)
   return (
     <div className="list">
-          <button onClick={() => store.add()}>Add</button>
-          <button onClick={() => store.resetAll()}>Reset all</button>
-          <span>Sum {sum}</span>
-      {state.list.map((x,i) => <div><Counter
-          key={i}
-          store={new CounterStore(store.rxState.slice('list').slice(i))}/></div> )}
+      <button onClick={() => store.add()}>Add</button>
+      <button onClick={() => store.resetAll()}>Reset all</button>
+      <span>Sum {sum}</span>
+      {state.list.map((x, i) => <div><Counter
+        key={i}
+        store={new CounterStore(store.rxState.slice('list').slice(i))}/></div>)}
     </div>
   )
 

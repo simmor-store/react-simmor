@@ -12,17 +12,17 @@ export class CounterPairStore extends ReducerStore<CounterPairState> {
   leftStore = new CounterStore(this.rxState.slice('left'))
   rightStore = new CounterStore(this.rxState.slice('right'))
 
-  constructor(){
+  constructor() {
     super({left: {value: 100}, right: {value: 200}})
   }
 
-  swap(){
+  swap() {
     const [leftValue, rightValue] = [this.state.left.value, this.state.right.value]
     this.leftStore.setValue(rightValue)
     this.rightStore.setValue(leftValue)
   }
 
-  static sum(state: CounterPairState){
+  static sum(state: CounterPairState) {
     return state.left.value + state.right.value
   }
 }
