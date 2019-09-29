@@ -21,6 +21,10 @@ export class CounterListStore extends ReducerStore<CounterListState> {
     this.draft.list.push({value: 0})
   }
 
+  remove() {
+    this.draft.list.pop()
+  }
+
   resetAll() {
     this.draft.list.forEach(x => x.value = 0)
   }
@@ -35,10 +39,10 @@ export const CounterList = () => {
   return (
     <div className="list">
       <button onClick={() => store.add()}>Add</button>
+      <button onClick={() => store.remove()}>Remove</button>
       <button onClick={() => store.resetAll()}>Reset all</button>
       <span>Sum {sum}</span>
-      {state.list.map((x, i) => <div><Counter
-        key={i}
+      {state.list.map((x, i) => <div key={i}><Counter
         store={new CounterStore(store.rxState.slice('list').slice(i))}/></div>)}
     </div>
   )
