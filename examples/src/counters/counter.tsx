@@ -28,7 +28,7 @@ export const Counter = (props: {store: CounterStore}) => {
       <div className="counter"><span>{value}</span>
         <button onClick={() => props.store.increase()}>+</button>
         <button onClick={() => props.store.decrease()}>-</button>
-        <button onClick={() => props.store.setValue(0)}>reset</button>
+        <button onClick={() => props.store.setValue(0)}>Reset</button>
       </div>
   )
 }

@@ -33,8 +33,8 @@ export const CounterList = () => {
   const sum = getSum(state)
   return (
     <div className="list">
-          <button onClick={() => store.add()}>add</button>
-          <button onClick={() => store.resetAll()}>reset all</button>
+          <button onClick={() => store.add()}>Add</button>
+          <button onClick={() => store.resetAll()}>Reset all</button>
           <span>Sum {sum}</span>
       {state.list.map((x,i) => <div><Counter
           key={i}
