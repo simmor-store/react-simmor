@@ -6,7 +6,7 @@
     "lib/*"
   ],
   "main": "lib/index.js",
-  "module": "lib/index.mjs",
+  "module": "lib/index.module.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
@@ -37,7 +37,7 @@
   "homepage": "https://github.com/simmor-store/react-simmor#readme",
   "peerDependencies": {
     "react": "^16.8",
-    "simmor": "^0.2.0"
+    "simmor": "^0.2.4"
   },
   "devDependencies": {
     "@testing-library/react": "^9.1.4",
@@ -48,7 +48,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-test-renderer": "^16.9.0",
-    "simmor": "^0.2.3",
+    "simmor": "^0.2.4",
     "typescript": "^3.6.3",
     "jest": "^24.9.0",
     "microbundle": "^0.11.0",
