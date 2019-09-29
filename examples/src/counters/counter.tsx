@@ -22,13 +22,13 @@ export class CounterStore extends ReducerStore<CounterState> {
   }
 }
 
-export const Counter = (props: { store: CounterStore }) => {
-  const value = useStore(props.store, x => x.value)
+export const Counter = ({store}: { store: CounterStore }) => {
+  const value = useStore(store, x => x.value)
   return (
     <div className="counter"><span>{value}</span>
-      <button onClick={() => props.store.increase()}>+</button>
-      <button onClick={() => props.store.decrease()}>-</button>
-      <button onClick={() => props.store.setValue(0)}>Reset</button>
+      <button onClick={() => store.increase()}>+</button>
+      <button onClick={() => store.decrease()}>-</button>
+      <button onClick={() => store.setValue(0)}>Reset</button>
     </div>
   )
 }

@@ -7,6 +7,9 @@ export const CounterWithLocalStore = () => {
     increase() {
       ctx.draft.value += 1
     },
+    increaseWithDelay() {
+      setTimeout(() => this.increase(), 300)
+    },
     decrease() {
       const newValue = ctx.draft.value - 1
       if (newValue >= 0) {
@@ -22,7 +25,8 @@ export const CounterWithLocalStore = () => {
       <span>{state.value}</span>
       <button onClick={() => dispatch.increase()}>+</button>
       <button onClick={() => dispatch.decrease()}>-</button>
-      <button onClick={() => dispatch.setValue(0)}>reset</button>
+      <button onClick={() => dispatch.setValue(0)}>Reset</button>
+      <button onClick={() => dispatch.increaseWithDelay()}>Increase with delay</button>
     </div>
   )
 }
