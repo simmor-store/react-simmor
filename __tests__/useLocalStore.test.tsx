@@ -18,4 +18,10 @@ it('useLocalStore', () => {
 
   expect(result.current[0].value).toBe(2)
 
+  act(() => {
+    result.current[1].increase()
+  })
+
+  expect(result.current[0].value).toBe(3)
+
 });

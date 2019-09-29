@@ -46,10 +46,17 @@ function testUseStore(Component: React.FunctionComponent<Props>, next = () => {}
   expect(renderCount).toBe(2)
 
   act(() => {
+    store.increase()
+  })
+
+  expect(container.getByTestId("value").innerHTML).toBe("3")
+  expect(renderCount).toBe(3)
+
+  act(() => {
     store.updateArrayAt(0)
   })
 
-  expect(renderCount).toBe(2)
+  expect(renderCount).toBe(3)
 
 }
 

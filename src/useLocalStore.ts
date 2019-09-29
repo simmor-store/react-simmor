@@ -12,7 +12,7 @@ export function useLocalStore<TState, TActions extends Actions>(
   initialState: InitialState<TState>,
   reducer: LocalReducer<TState, TActions>,
   options = defaultReducerOptions,
-  deps?: DependencyList,
+  deps: DependencyList = [],
 ): [TState, TActions] {
   const store = useMemo(
     () => createLocalStore(initialState, reducer, options),
