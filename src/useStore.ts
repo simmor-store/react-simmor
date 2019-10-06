@@ -1,22 +1,33 @@
 import {RxState, select} from "simmor"
-import {useEffect, useState} from "react"
+import {useEffect, useRef, useState} from "react"
+import {shallowEqual} from "./shallowEqual"
 
 export function useStore<TState, TResult>(
   store: {rxState: RxState<TState>},
   project: (store: TState) => TResult,
 ): TResult {
-  const [state, setState] = useState(project(store.rxState.state))
+  const projectRef = useRef(project)
+  useEffect(() => {
+    projectRef.current = project
+  })
+
+  const [, forceUpdate] = useState({})
+
+  const stateRef = useRef(projectRef.current(store.rxState.state))
 
   useEffect(() => {
-    const subscription = store.rxState.state$
-      .pipe(select(project))
-      .subscribe(value => {
-        setState(value)
-      })
+    const subscription = store.rxState.state$.subscribe(value => {
+      const prevState = stateRef.current
+      const newState = projectRef.current(value)
+      stateRef.current = newState
+      if (!shallowEqual(prevState, newState)) {
+        forceUpdate({})
+      }
+    })
     return () => {
       subscription.unsubscribe()
     }
-  }, [])
+  }, [store])
 
-  return state
+  return stateRef.current
 }
