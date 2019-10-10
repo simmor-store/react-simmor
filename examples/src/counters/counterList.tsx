@@ -43,7 +43,7 @@ export const CounterList = () => {
       <button onClick={() => store.resetAll()}>Reset all</button>
       <span>Sum {sum}</span>
       {state.list.map((x, i) => <div key={i}><Counter
-        store={new CounterStore(store.rxState.slice('list').slice(i))}/></div>)}
+        store={new CounterStore(store.slice('list').slice(i))}/></div>)}
     </div>
   )
 

@@ -9,8 +9,8 @@ type CounterPairState = {
 }
 
 export class CounterPairStore extends ReducerStore<CounterPairState> {
-  leftStore = new CounterStore(this.rxState.slice('left'))
-  rightStore = new CounterStore(this.rxState.slice('right'))
+  leftStore = new CounterStore(this.slice('left'))
+  rightStore = new CounterStore(this.slice('right'))
 
   constructor() {
     super({left: {value: 100}, right: {value: 200}})
